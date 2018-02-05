@@ -8,13 +8,11 @@ def get_post(post_id):
 	r  = requests.get(url_link)
 	data = r.text
 	soup = BeautifulSoup(data)
+	paragraphs = soup.find_all('p')
 	content = [] 
-	
-	#lazy programming--take a look to change this, shouldn't be using a break
-	for link in soup.find_all('p'):
-		content.append(link)
-		break
-	
+
+	content.append(paragraphs[0])
+			
 	string = ""
 	
 	for i in content:
